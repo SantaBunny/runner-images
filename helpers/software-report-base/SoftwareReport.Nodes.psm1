@@ -260,7 +260,7 @@ class ToolVersionsListNode: BaseToolNode {
             "$majorVersion|$($_ -replace '^.*\.(\d+)$','$1')" 
         } | ForEach-Object {
             if ($_.Count -gt 1) {
-                throw "Multiple versions from list '$($this.GetValue())' return the same result from regex '$($this.MajorVersionRegex)': $($_.Name)"
+                throw "Multiple versions from list '$($this.Versions -join ', ')' return the same result from regex '$($this.MajorVersionRegex)': $($_.Name)"
             }
         }
     }
