@@ -256,8 +256,7 @@ class ToolVersionsListNode: BaseToolNode {
     hidden [void] ValidateMajorVersionRegex() {
         $this.Versions | Group-Object { 
             $majorVersion = $this.ExtractMajorVersion($_)
-            # Append another level of uniqueness by including the minor/patch versions if needed
-            "$majorVersion|$($_ -replace '^.*\.(\d+)$','$1')" 
+            "$majorVersion|$_" 
         } | ForEach-Object {
             if ($_.Count -gt 1) {
                 throw "Multiple versions from list '$($this.Versions -join ', ')' return the same result from regex '$($this.MajorVersionRegex)': $($_.Name)"
