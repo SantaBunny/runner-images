@@ -160,7 +160,7 @@ Describe "Nodes.UnitTests" {
             }
 
             It "Minor version regex - non-unique versions" {
-                { [ToolVersionsListNode]::new("MyTool", @("2.1.3", "2.1.4", "2.1.5", "3.1.2"), "^\d+\.\d+", "List") } | Should -Throw "Multiple versions from list * return the same result from regex *"
+                { [ToolVersionsListNode]::new("MyTool", @("2.1.3", "2.1.4", "3.1.2", "3.1.2"), "^\d+\.\d+", "List") } | Should -Throw "Multiple versions from list * return the same result from regex *"
             }
 
             It "Patch version regex - unique versions" {
