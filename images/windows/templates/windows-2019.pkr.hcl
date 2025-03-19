@@ -2,10 +2,11 @@ packer {
   required_plugins {
     azure = {
       source  = "github.com/hashicorp/azure"
-      version = "1.4.5"
+      version = "~> 2"
     }
   }
 }
+
 
 locals {
   managed_image_name = var.managed_image_name != "" ? var.managed_image_name : "packer-${var.image_os}-${var.image_version}"
